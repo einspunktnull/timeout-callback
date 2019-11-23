@@ -1,2 +1,2 @@
-# timeout
+# Timeout arduino lib
 
