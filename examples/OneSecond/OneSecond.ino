@@ -1,7 +1,7 @@
 #include "Arduino.h"
-#include <Timeout.h>
+#include <TimeoutCallback.h>
 
-Timeout timeout;
+TimeoutCallback timeout;
 
 int num = 0;
 

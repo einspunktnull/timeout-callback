@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-class Timeout {
+class TimeoutCallback {
 
 public:
 	typedef void (*ExternalCallbackPointer)();
