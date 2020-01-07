@@ -1,21 +1,34 @@
 #include "TimeoutCallback.h"
 
-void TimeoutCallback::start(unsigned long duration, ExternalCallbackPointer onTimeoutCallbackPointer) {
-	this->onTimeoutCallbackPointer = onTimeoutCallbackPointer;
-	this->duration = duration;
+TimeoutCallback::TimeoutCallback(unsigned long durationMillis, ExternalCallbackPointer onTimeoutCallbackPointer) {
+    this->onTimeoutCallbackPointer = onTimeoutCallbackPointer;
+    this->duration = durationMillis;
+}
+
+void TimeoutCallback::start() {
 	this->lastMillis = millis();
+	this->running = true;
+}
+
+void TimeoutCallback::restart() {
+	this->start();
 }
 
 void TimeoutCallback::stop() {
-	this->onTimeoutCallbackPointer = 0;
+    this->running = false;
 }
 
+// Call this in Arduino loop() function
 void TimeoutCallback::loop() {
-	if (this->onTimeoutCallbackPointer != 0) {
+	if (this->running) {
 		unsigned long currentMillis = millis();
 		if ((currentMillis - this->lastMillis) >= this->duration) {
-			this->onTimeoutCallbackPointer();
 			this->stop();
+			this->onTimeoutCallbackPointer();
 		}
 	}
+}
+
+void TimeoutCallback::reset() {
+	this->lastMillis = millis();
 }

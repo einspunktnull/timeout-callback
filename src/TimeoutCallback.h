@@ -6,16 +6,20 @@
 class TimeoutCallback {
 
 public:
-	typedef void (*ExternalCallbackPointer)();
-	void start(unsigned long duration, ExternalCallbackPointer onTimeoutCallbackPointer);
-	void stop();
-	void loop();
+    typedef void (*ExternalCallbackPointer)();
+    TimeoutCallback(unsigned long durationMillis, ExternalCallbackPointer onTimeoutCallbackPointer);
+    void start();
+    void restart();
+    void stop();
+    void loop();
+    void reset();
 protected:
 
 private:
-	ExternalCallbackPointer onTimeoutCallbackPointer;
-	unsigned long duration;
-	unsigned long lastMillis;
+    ExternalCallbackPointer onTimeoutCallbackPointer;
+    unsigned long duration;
+    unsigned long lastMillis;
+    boolean running = false;
 };
 
 #endif
