@@ -13,6 +13,8 @@ public:
     void stop();
     void loop();
     void reset();
+    void setDuration(unsigned long durationMillis);
+    void setCallback(ExternalCallbackPointer onTimeoutCallbackPointer);
 protected:
 
 private:
