@@ -2,6 +2,10 @@
 
 # Changelog
 
+## Version 1.3.0
+
+* Add getDuration() function
+
 ## Version 1.2.0
 
 * Add setDuration() function 

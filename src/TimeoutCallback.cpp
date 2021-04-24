@@ -36,10 +36,18 @@ void TimeoutCallback::reset() {
     this->lastMillis = millis();
 }
 
+unsigned long TimeoutCallback::getDuration() {
+    return this->duration;
+}
+
 void TimeoutCallback::setDuration(unsigned long durationMillis) {
     this->duration = durationMillis;
 }
 
 void TimeoutCallback::setCallback(ExternalCallbackPointer onTimeoutCallbackPointer) {
     this->onTimeoutCallbackPointer = onTimeoutCallbackPointer;
+}
+
+bool TimeoutCallback::isRunning() {
+    return this->running;
 }

@@ -1,5 +1,5 @@
-#ifndef TIMEOUT_H
-#define TIMEOUT_H
+#ifndef TIMEOUT_CALLBACK_H
+#define TIMEOUT_CALLBACK_H
 
 #include <Arduino.h>
 
@@ -13,8 +13,10 @@ public:
     void stop();
     void loop();
     void reset();
-    void setDuration(unsigned long durationMillis);
     void setCallback(ExternalCallbackPointer onTimeoutCallbackPointer);
+    void setDuration(unsigned long durationMillis);
+    unsigned long getDuration();
+    boolean isRunning();
 protected:
 
 private:
